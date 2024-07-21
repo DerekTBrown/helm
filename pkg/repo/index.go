@@ -266,11 +266,11 @@ func (i *IndexFile) Merge(f *IndexFile) {
 
 // ChartVersion represents a chart entry in the IndexFile
 type ChartVersion struct {
-	*chart.Metadata
-	URLs    []string  `json:"urls"`
-	Created time.Time `json:"created,omitempty"`
-	Removed bool      `json:"removed,omitempty"`
-	Digest  string    `json:"digest,omitempty"`
+	*chart.Metadata `json:",inline",yaml:",inline"`
+	URLs            []string  `json:"urls"`
+	Created         time.Time `json:"created,omitempty"`
+	Removed         bool      `json:"removed,omitempty"`
+	Digest          string    `json:"digest,omitempty"`
 
 	// ChecksumDeprecated is deprecated in Helm 3, and therefore ignored. Helm 3 replaced
 	// this with Digest. However, with a strict YAML parser enabled, a field must be
